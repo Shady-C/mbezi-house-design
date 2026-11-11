@@ -1,0 +1,1797 @@
+{
+ "version": 1,
+ "northDeg": {
+  "value": 82.0,
+  "source": "exif",
+  "confidence": "medium"
+ },
+ "plot": {
+  "polygon": [
+   [
+    0,
+    0
+   ],
+   [
+    8.6,
+    0
+   ],
+   [
+    8.6,
+    26.6
+   ],
+   [
+    0,
+    26.6
+   ]
+  ],
+  "wallHeight": {
+   "value": 2.4,
+   "source": "assumption",
+   "confidence": "low"
+  }
+ },
+ "rooms": [
+  {
+   "id": "bd2",
+   "name": "BD 2 (main)",
+   "kind": "indoor",
+   "polygon": [
+    [
+     2.3,
+     7.1
+    ],
+    [
+     7.5,
+     7.1
+    ],
+    [
+     7.5,
+     11.25
+    ],
+    [
+     2.3,
+     11.25
+    ]
+   ],
+   "floor": "white-diagonal",
+   "ceiling": {
+    "type": "flat",
+    "height": {
+     "value": 3.0,
+     "source": "assumption",
+     "confidence": "low"
+    }
+   },
+   "estimate": {
+    "source": "tile-count",
+    "confidence": "medium",
+    "note": "Front wall \u2248 3\u00d7 window width; ~5 diagonal 600 mm tile diagonals along the front wall (3474, 3467)"
+   }
+  },
+  {
+   "id": "ensuite",
+   "name": "En-suite",
+   "kind": "indoor",
+   "polygon": [
+    [
+     2.3,
+     11.25
+    ],
+    [
+     4.65,
+     11.25
+    ],
+    [
+     4.65,
+     13.4
+    ],
+    [
+     2.3,
+     13.4
+    ]
+   ],
+   "floor": "bath-pattern",
+   "ceiling": {
+    "type": "flat",
+    "height": {
+     "value": 3.0,
+     "source": "assumption",
+     "confidence": "low"
+    }
+   },
+   "estimate": {
+    "source": "door-width",
+    "confidence": "low",
+    "note": "Fits WC + shower + basin with 0.75 m door (3470-3472); width set so en-suite + W/C 1 = BD 1 width"
+   }
+  },
+  {
+   "id": "wc1",
+   "name": "W/C 1",
+   "kind": "indoor",
+   "polygon": [
+    [
+     4.65,
+     11.25
+    ],
+    [
+     6.05,
+     11.25
+    ],
+    [
+     6.05,
+     13.4
+    ],
+    [
+     4.65,
+     13.4
+    ]
+   ],
+   "floor": "bath-pattern",
+   "ceiling": {
+    "type": "flat",
+    "height": {
+     "value": 3.0,
+     "source": "assumption",
+     "confidence": "low"
+    }
+   },
+   "estimate": {
+    "source": "door-width",
+    "confidence": "low",
+    "note": "Narrow: door + squat pan + shower in one line (3478-3479)"
+   }
+  },
+  {
+   "id": "bd1",
+   "name": "BD 1",
+   "kind": "indoor",
+   "polygon": [
+    [
+     2.3,
+     13.4
+    ],
+    [
+     6.05,
+     13.4
+    ],
+    [
+     6.05,
+     17.15
+    ],
+    [
+     2.3,
+     17.15
+    ]
+   ],
+   "floor": "white-diagonal",
+   "ceiling": {
+    "type": "flat",
+    "height": {
+     "value": 3.0,
+     "source": "assumption",
+     "confidence": "low"
+    }
+   },
+   "estimate": {
+    "source": "tile-count",
+    "confidence": "medium",
+    "note": "~4-5 tile diagonals along window wall (3482); near-square room"
+   }
+  },
+  {
+   "id": "hall",
+   "name": "Hallway",
+   "kind": "indoor",
+   "polygon": [
+    [
+     6.05,
+     11.25
+    ],
+    [
+     7.5,
+     11.25
+    ],
+    [
+     7.5,
+     17.15
+    ],
+    [
+     6.05,
+     17.15
+    ]
+   ],
+   "floor": "white-diagonal",
+   "ceiling": {
+    "type": "flat",
+    "height": {
+     "value": 3.0,
+     "source": "assumption",
+     "confidence": "low"
+    }
+   },
+   "estimate": {
+    "source": "door-width",
+    "confidence": "medium",
+    "note": "Clear width \u2248 1.3 doors (3476-3477); length = BD 1 + baths"
+   }
+  },
+  {
+   "id": "living",
+   "name": "Living / dining",
+   "kind": "indoor",
+   "polygon": [
+    [
+     2.3,
+     17.15
+    ],
+    [
+     7.5,
+     17.15
+    ],
+    [
+     7.5,
+     22.1
+    ],
+    [
+     2.3,
+     22.1
+    ]
+   ],
+   "floor": "wood-look",
+   "ceiling": {
+    "type": "tray",
+    "height": {
+     "value": 3.0,
+     "source": "assumption",
+     "confidence": "low"
+    }
+   },
+   "estimate": {
+    "source": "tile-count",
+    "confidence": "medium",
+    "note": "~4 wood-look 600\u00d71200 tiles across, tray ceiling (3456, 3486-3489)"
+   }
+  },
+  {
+   "id": "kitchen",
+   "name": "Kitchen",
+   "kind": "indoor",
+   "polygon": [
+    [
+     2.3,
+     22.1
+    ],
+    [
+     7.5,
+     22.1
+    ],
+    [
+     7.5,
+     25.3
+    ],
+    [
+     2.3,
+     25.3
+    ]
+   ],
+   "floor": "wood-look",
+   "ceiling": {
+    "type": "flat",
+    "height": {
+     "value": 3.0,
+     "source": "assumption",
+     "confidence": "low"
+    }
+   },
+   "estimate": {
+    "source": "sketch",
+    "confidence": "low",
+    "note": "Full house width per sketch; depth from counter + walkway (3491-3494)"
+   }
+  },
+  {
+   "id": "owc",
+   "name": "Outside W/C",
+   "kind": "indoor",
+   "polygon": [
+    [
+     0.0,
+     25.0
+    ],
+    [
+     1.8,
+     25.0
+    ],
+    [
+     1.8,
+     26.6
+    ],
+    [
+     0.0,
+     26.6
+    ]
+   ],
+   "floor": "bath-pattern",
+   "ceiling": {
+    "type": "flat",
+    "height": {
+     "value": 2.6,
+     "source": "assumption",
+     "confidence": "low"
+    }
+   },
+   "estimate": {
+    "source": "door-width",
+    "confidence": "low",
+    "note": "Against compound wall, back-west corner; walkway door only (3443, 3451-3453)"
+   }
+  },
+  {
+   "id": "porch",
+   "name": "Porch",
+   "kind": "outdoor",
+   "polygon": [
+    [
+     1.1,
+     17.15
+    ],
+    [
+     2.3,
+     17.15
+    ],
+    [
+     2.3,
+     22.1
+    ],
+    [
+     1.1,
+     22.1
+    ]
+   ],
+   "floor": "porch-tile",
+   "ceiling": {
+    "type": "none"
+   },
+   "estimate": {
+    "source": "paver-count",
+    "confidence": "low",
+    "note": "Raised tiled strip with pillars along living room west wall (3444-3446)"
+   }
+  },
+  {
+   "id": "walk-w",
+   "name": "West walkway",
+   "kind": "outdoor",
+   "polygon": [
+    [
+     0,
+     7.1
+    ],
+    [
+     2.3,
+     7.1
+    ],
+    [
+     2.3,
+     17.15
+    ],
+    [
+     1.1,
+     17.15
+    ],
+    [
+     1.1,
+     22.1
+    ],
+    [
+     2.3,
+     22.1
+    ],
+    [
+     2.3,
+     25.0
+    ],
+    [
+     0,
+     25.0
+    ]
+   ],
+   "floor": "pavers",
+   "ceiling": {
+    "type": "none"
+   },
+   "estimate": {
+    "source": "paver-count",
+    "confidence": "low",
+    "note": "Wider side with porch, pots, breeze-block wall (3444, 3446, 3496)"
+   }
+  },
+  {
+   "id": "walk-e",
+   "name": "East walkway",
+   "kind": "outdoor",
+   "polygon": [
+    [
+     7.5,
+     7.1
+    ],
+    [
+     8.6,
+     7.1
+    ],
+    [
+     8.6,
+     25.3
+    ],
+    [
+     7.5,
+     25.3
+    ]
+   ],
+   "floor": "pavers",
+   "ceiling": {
+    "type": "none"
+   },
+   "estimate": {
+    "source": "paver-count",
+    "confidence": "medium",
+    "note": "~5 herringbone paver widths, about 1 m clear (3499-3502)"
+   }
+  },
+  {
+   "id": "walk-n",
+   "name": "Back walkway",
+   "kind": "outdoor",
+   "polygon": [
+    [
+     1.8,
+     25.0
+    ],
+    [
+     2.3,
+     25.0
+    ],
+    [
+     2.3,
+     25.3
+    ],
+    [
+     8.6,
+     25.3
+    ],
+    [
+     8.6,
+     26.6
+    ],
+    [
+     1.8,
+     26.6
+    ]
+   ],
+   "floor": "pavers",
+   "ceiling": {
+    "type": "none"
+   },
+   "estimate": {
+    "source": "paver-count",
+    "confidence": "low",
+    "note": "AC outdoor units, water lines (3454, 3503-3508)"
+   }
+  },
+  {
+   "id": "parking",
+   "name": "Parking",
+   "kind": "outdoor",
+   "polygon": [
+    [
+     0,
+     0
+    ],
+    [
+     8.6,
+     0
+    ],
+    [
+     8.6,
+     7.1
+    ],
+    [
+     0,
+     7.1
+    ]
+   ],
+   "floor": "pavers",
+   "ceiling": {
+    "type": "none"
+   },
+   "estimate": {
+    "source": "paver-count",
+    "confidence": "low",
+    "note": "Yard about as deep as the plot is wide (3447-3448, 3497-3498)"
+   }
+  }
+ ],
+ "openings": [
+  {
+   "id": "door-front",
+   "room": "living",
+   "edge": 3,
+   "offset": {
+    "value": 0.4,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.0,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 2.2,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "door",
+   "swing": "in-right"
+  },
+  {
+   "id": "win-living-w",
+   "room": "living",
+   "edge": 3,
+   "offset": {
+    "value": 2.2,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.5,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.3,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0.9,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "win-living-e",
+   "room": "living",
+   "edge": 1,
+   "offset": {
+    "value": 2.4,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.8,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.4,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0.8,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "open-hall",
+   "room": "living",
+   "edge": 0,
+   "offset": {
+    "value": 3.85,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.25,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 2.2,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "archway",
+   "swing": null
+  },
+  {
+   "id": "arch-kitchen",
+   "room": "living",
+   "edge": 2,
+   "offset": {
+    "value": 0.3,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 2.4,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 2.3,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "archway",
+   "swing": null
+  },
+  {
+   "id": "win-kitchen-w",
+   "room": "kitchen",
+   "edge": 3,
+   "offset": {
+    "value": 0.9,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.4,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.2,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 1.05,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "win-kitchen-e",
+   "room": "kitchen",
+   "edge": 1,
+   "offset": {
+    "value": 0.8,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.6,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.3,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0.9,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "win-hall-e1",
+   "room": "hall",
+   "edge": 1,
+   "offset": {
+    "value": 1.2,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.2,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.3,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0.9,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "win-hall-e2",
+   "room": "hall",
+   "edge": 1,
+   "offset": {
+    "value": 3.8,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.2,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.3,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0.9,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "door-bd1",
+   "room": "hall",
+   "edge": 3,
+   "offset": {
+    "value": 0.5,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 0.9,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 2.1,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "door",
+   "swing": "out-right"
+  },
+  {
+   "id": "door-wc1",
+   "room": "hall",
+   "edge": 3,
+   "offset": {
+    "value": 4.4,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 0.75,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 2.1,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "door",
+   "swing": "out-left"
+  },
+  {
+   "id": "door-bd2",
+   "room": "hall",
+   "edge": 0,
+   "offset": {
+    "value": 0.25,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 0.9,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 2.1,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "door",
+   "swing": "out-left"
+  },
+  {
+   "id": "win-bd1-w",
+   "room": "bd1",
+   "edge": 3,
+   "offset": {
+    "value": 1.2,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.5,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.3,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0.9,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "door-ensuite",
+   "room": "ensuite",
+   "edge": 0,
+   "offset": {
+    "value": 1.4,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 0.75,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 2.1,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "door",
+   "swing": "out-right"
+  },
+  {
+   "id": "win-ensuite-w",
+   "room": "ensuite",
+   "edge": 3,
+   "offset": {
+    "value": 0.7,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 0.6,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 0.8,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 1.4,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "win-bd2-s",
+   "room": "bd2",
+   "edge": 0,
+   "offset": {
+    "value": 1.9,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.5,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.3,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0.9,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "win-bd2-e",
+   "room": "bd2",
+   "edge": 1,
+   "offset": {
+    "value": 1.4,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 1.3,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.3,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0.9,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "win-bd2-w",
+   "room": "bd2",
+   "edge": 3,
+   "offset": {
+    "value": 0.9,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 2.2,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 1.4,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0.8,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "door-owc",
+   "room": "owc",
+   "edge": 0,
+   "offset": {
+    "value": 0.5,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 0.75,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 2.0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "door",
+   "swing": "in-left"
+  },
+  {
+   "id": "win-owc-e",
+   "room": "owc",
+   "edge": 1,
+   "offset": {
+    "value": 0.9,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 0.5,
+    "source": "door-width",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 0.4,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 1.5,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "window",
+   "swing": null
+  },
+  {
+   "id": "gate",
+   "room": "parking",
+   "edge": 3,
+   "offset": {
+    "value": 0.6,
+    "source": "paver-count",
+    "confidence": "low"
+   },
+   "width": {
+    "value": 4.0,
+    "source": "paver-count",
+    "confidence": "low"
+   },
+   "height": {
+    "value": 2.4,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "sill": {
+    "value": 0,
+    "source": "assumption",
+    "confidence": "low"
+   },
+   "type": "gate",
+   "swing": null
+  }
+ ],
+ "fixtures": [
+  {
+   "id": "counter-w",
+   "room": "kitchen",
+   "kind": "counter",
+   "x": 2.72,
+   "y": 23.8,
+   "w": 0.6,
+   "d": 2.6,
+   "rot": 0
+  },
+  {
+   "id": "counter-n",
+   "room": "kitchen",
+   "kind": "counter",
+   "x": 3.9,
+   "y": 24.92,
+   "w": 1.8,
+   "d": 0.6,
+   "rot": 0
+  },
+  {
+   "id": "cabinets-n",
+   "room": "kitchen",
+   "kind": "wall-cabinet",
+   "x": 3.9,
+   "y": 25.03,
+   "w": 1.8,
+   "d": 0.35,
+   "rot": 0
+  },
+  {
+   "id": "cabinets-w",
+   "room": "kitchen",
+   "kind": "wall-cabinet",
+   "x": 2.58,
+   "y": 24.2,
+   "w": 0.35,
+   "d": 1.2,
+   "rot": 0
+  },
+  {
+   "id": "toilet-wc1",
+   "room": "wc1",
+   "kind": "toilet-squat",
+   "x": 5.35,
+   "y": 12.95,
+   "w": 0.45,
+   "d": 0.6,
+   "rot": 0
+  },
+  {
+   "id": "basin-wc1",
+   "room": "wc1",
+   "kind": "basin",
+   "x": 4.95,
+   "y": 12.1,
+   "w": 0.45,
+   "d": 0.4,
+   "rot": 0
+  },
+  {
+   "id": "shower-wc1",
+   "room": "wc1",
+   "kind": "shower",
+   "x": 5.55,
+   "y": 11.75,
+   "w": 0.8,
+   "d": 0.8,
+   "rot": 0
+  },
+  {
+   "id": "toilet-ensuite",
+   "room": "ensuite",
+   "kind": "toilet-western",
+   "x": 2.75,
+   "y": 12.4,
+   "w": 0.4,
+   "d": 0.7,
+   "rot": 0
+  },
+  {
+   "id": "basin-ensuite",
+   "room": "ensuite",
+   "kind": "basin",
+   "x": 3.4,
+   "y": 13.1,
+   "w": 0.5,
+   "d": 0.4,
+   "rot": 0
+  },
+  {
+   "id": "shower-ensuite",
+   "room": "ensuite",
+   "kind": "shower",
+   "x": 2.85,
+   "y": 11.75,
+   "w": 0.9,
+   "d": 0.9,
+   "rot": 0
+  },
+  {
+   "id": "toilet-owc",
+   "room": "owc",
+   "kind": "toilet-squat",
+   "x": 0.9,
+   "y": 26.1,
+   "w": 0.45,
+   "d": 0.6,
+   "rot": 0
+  },
+  {
+   "id": "basin-owc",
+   "room": "owc",
+   "kind": "basin",
+   "x": 1.45,
+   "y": 25.6,
+   "w": 0.4,
+   "d": 0.35,
+   "rot": 0
+  },
+  {
+   "id": "tank-owc",
+   "room": "owc",
+   "kind": "tank",
+   "x": 0.9,
+   "y": 25.8,
+   "w": 1.1,
+   "d": 1.1,
+   "rot": 0
+  },
+  {
+   "id": "ac-living",
+   "room": "living",
+   "kind": "ac",
+   "x": 4.9,
+   "y": 21.95,
+   "w": 0.9,
+   "d": 0.25,
+   "rot": 0
+  },
+  {
+   "id": "ac-bd1",
+   "room": "bd1",
+   "kind": "ac",
+   "x": 2.45,
+   "y": 16.5,
+   "w": 0.25,
+   "d": 0.9,
+   "rot": 0
+  },
+  {
+   "id": "ac-bd2",
+   "room": "bd2",
+   "kind": "ac",
+   "x": 2.45,
+   "y": 7.7,
+   "w": 0.25,
+   "d": 0.9,
+   "rot": 0
+  },
+  {
+   "id": "fan-living",
+   "room": "living",
+   "kind": "fan",
+   "x": 4.9,
+   "y": 19.6,
+   "w": 1.3,
+   "d": 1.3,
+   "rot": 0
+  },
+  {
+   "id": "fan-bd1",
+   "room": "bd1",
+   "kind": "fan",
+   "x": 4.2,
+   "y": 15.3,
+   "w": 1.2,
+   "d": 1.2,
+   "rot": 0
+  },
+  {
+   "id": "fan-bd2",
+   "room": "bd2",
+   "kind": "fan",
+   "x": 4.9,
+   "y": 9.2,
+   "w": 1.3,
+   "d": 1.3,
+   "rot": 0
+  },
+  {
+   "id": "pillar-0",
+   "room": "porch",
+   "kind": "pillar",
+   "x": 1.25,
+   "y": 17.4,
+   "w": 0.25,
+   "d": 0.25,
+   "rot": 0
+  },
+  {
+   "id": "pillar-1",
+   "room": "porch",
+   "kind": "pillar",
+   "x": 1.25,
+   "y": 19.6,
+   "w": 0.25,
+   "d": 0.25,
+   "rot": 0
+  },
+  {
+   "id": "pillar-2",
+   "room": "porch",
+   "kind": "pillar",
+   "x": 1.25,
+   "y": 21.85,
+   "w": 0.25,
+   "d": 0.25,
+   "rot": 0
+  }
+ ],
+ "photos": [
+  {
+   "file": "IMG_3443",
+   "x": 1.0,
+   "y": 22.5,
+   "room": "walk-w",
+   "heading": 5.1
+  },
+  {
+   "file": "IMG_3444",
+   "x": 0.7,
+   "y": 16.5,
+   "room": "walk-w",
+   "heading": 6.1
+  },
+  {
+   "file": "IMG_3445",
+   "x": 0.6,
+   "y": 19.9,
+   "room": "walk-w",
+   "heading": 90.0
+  },
+  {
+   "file": "IMG_3446",
+   "x": 1.7,
+   "y": 21.5,
+   "room": "porch",
+   "heading": 180.0
+  },
+  {
+   "file": "IMG_3447",
+   "x": 2.5,
+   "y": 4.0,
+   "room": "parking",
+   "heading": 105.8
+  },
+  {
+   "file": "IMG_3448",
+   "x": 6.0,
+   "y": 4.0,
+   "room": "parking",
+   "heading": 269.5
+  },
+  {
+   "file": "IMG_3449",
+   "x": 8.0,
+   "y": 7.5,
+   "room": "walk-e",
+   "heading": 359.6
+  },
+  {
+   "file": "IMG_3450",
+   "x": 1.0,
+   "y": 3.0,
+   "room": "parking",
+   "heading": 0.3
+  },
+  {
+   "file": "IMG_3451",
+   "x": 1.0,
+   "y": 23.0,
+   "room": "walk-w",
+   "heading": 5.6
+  },
+  {
+   "file": "IMG_3452",
+   "x": 0.9,
+   "y": 25.2,
+   "room": "owc",
+   "heading": 11.0
+  },
+  {
+   "file": "IMG_3453",
+   "x": 0.9,
+   "y": 25.9,
+   "room": "owc",
+   "heading": 90.0
+  },
+  {
+   "file": "IMG_3454",
+   "x": 1.6,
+   "y": 25.9,
+   "room": "owc",
+   "heading": 86.4
+  },
+  {
+   "file": "IMG_3455",
+   "x": 2.5,
+   "y": 21.2,
+   "room": "living",
+   "heading": 100.0
+  },
+  {
+   "file": "IMG_3456",
+   "x": 2.6,
+   "y": 20.0,
+   "room": "living",
+   "heading": 120.0
+  },
+  {
+   "file": "IMG_3457",
+   "x": 6.0,
+   "y": 20.5,
+   "room": "living",
+   "heading": 350.0
+  },
+  {
+   "file": "IMG_3458",
+   "x": 5.5,
+   "y": 21.5,
+   "room": "living",
+   "heading": 330.0
+  },
+  {
+   "file": "IMG_3459",
+   "x": 5.5,
+   "y": 21.8,
+   "room": "living",
+   "heading": 180.0
+  },
+  {
+   "file": "IMG_3460",
+   "x": 5.5,
+   "y": 21.8,
+   "room": "living",
+   "heading": 180.0
+  },
+  {
+   "file": "IMG_3461",
+   "x": 6.5,
+   "y": 21.5,
+   "room": "living",
+   "heading": 200.0
+  },
+  {
+   "file": "IMG_3462",
+   "x": 6.0,
+   "y": 18.0,
+   "room": "living",
+   "heading": 180.0
+  },
+  {
+   "file": "IMG_3463",
+   "x": 6.6,
+   "y": 16.2,
+   "room": "hall",
+   "heading": 275.7
+  },
+  {
+   "file": "IMG_3464",
+   "x": 6.5,
+   "y": 16.2,
+   "room": "hall",
+   "heading": 298.3
+  },
+  {
+   "file": "IMG_3465",
+   "x": 6.5,
+   "y": 12.4,
+   "room": "hall",
+   "heading": 258.7
+  },
+  {
+   "file": "IMG_3466",
+   "x": 6.75,
+   "y": 11.0,
+   "room": "bd2",
+   "heading": 186.1
+  },
+  {
+   "file": "IMG_3467",
+   "x": 6.8,
+   "y": 10.6,
+   "room": "bd2",
+   "heading": 132.6
+  },
+  {
+   "file": "IMG_3468",
+   "x": 6.5,
+   "y": 10.8,
+   "room": "bd2",
+   "heading": 232.1
+  },
+  {
+   "file": "IMG_3469",
+   "x": 3.0,
+   "y": 7.8,
+   "room": "bd2",
+   "heading": 324.1
+  },
+  {
+   "file": "IMG_3470",
+   "x": 4.0,
+   "y": 10.0,
+   "room": "bd2",
+   "heading": 345.0
+  },
+  {
+   "file": "IMG_3471",
+   "x": 3.8,
+   "y": 12.0,
+   "room": "ensuite",
+   "heading": 294.6
+  },
+  {
+   "file": "IMG_3472",
+   "x": 3.5,
+   "y": 12.6,
+   "room": "ensuite",
+   "heading": 160.0
+  },
+  {
+   "file": "IMG_3473",
+   "x": 4.0,
+   "y": 11.6,
+   "room": "ensuite",
+   "heading": 175.8
+  },
+  {
+   "file": "IMG_3474",
+   "x": 4.0,
+   "y": 10.8,
+   "room": "bd2",
+   "heading": 180.0
+  },
+  {
+   "file": "IMG_3475",
+   "x": 3.0,
+   "y": 7.6,
+   "room": "bd2",
+   "heading": 47.8
+  },
+  {
+   "file": "IMG_3476",
+   "x": 6.75,
+   "y": 10.8,
+   "room": "bd2",
+   "heading": 0.0
+  },
+  {
+   "file": "IMG_3477",
+   "x": 6.75,
+   "y": 11.8,
+   "room": "hall",
+   "heading": 359.0
+  },
+  {
+   "file": "IMG_3478",
+   "x": 6.6,
+   "y": 12.4,
+   "room": "hall",
+   "heading": 273.3
+  },
+  {
+   "file": "IMG_3479",
+   "x": 5.6,
+   "y": 12.4,
+   "room": "wc1",
+   "heading": 226.2
+  },
+  {
+   "file": "IMG_3480",
+   "x": 5.4,
+   "y": 16.5,
+   "room": "bd1",
+   "heading": 217.1
+  },
+  {
+   "file": "IMG_3481",
+   "x": 5.3,
+   "y": 16.0,
+   "room": "bd1",
+   "heading": 220.0
+  },
+  {
+   "file": "IMG_3482",
+   "x": 5.0,
+   "y": 14.0,
+   "room": "bd1",
+   "heading": 298.4
+  },
+  {
+   "file": "IMG_3483",
+   "x": 5.6,
+   "y": 16.4,
+   "room": "bd1",
+   "heading": 288.4
+  },
+  {
+   "file": "IMG_3484",
+   "x": 3.0,
+   "y": 15.0,
+   "room": "bd1",
+   "heading": 270.0
+  },
+  {
+   "file": "IMG_3485",
+   "x": 6.75,
+   "y": 13.0,
+   "room": "hall",
+   "heading": 4.2
+  },
+  {
+   "file": "IMG_3486",
+   "x": 6.6,
+   "y": 17.6,
+   "room": "living",
+   "heading": 352.3
+  },
+  {
+   "file": "IMG_3487",
+   "x": 6.3,
+   "y": 17.6,
+   "room": "living",
+   "heading": 314.9
+  },
+  {
+   "file": "IMG_3488",
+   "x": 7.0,
+   "y": 17.8,
+   "room": "living",
+   "heading": 292.6
+  },
+  {
+   "file": "IMG_3489",
+   "x": 6.8,
+   "y": 18.3,
+   "room": "living",
+   "heading": 33.0
+  },
+  {
+   "file": "IMG_3490",
+   "x": 3.0,
+   "y": 18.0,
+   "room": "living",
+   "heading": 354.4
+  },
+  {
+   "file": "IMG_3491",
+   "x": 6.5,
+   "y": 22.6,
+   "room": "kitchen",
+   "heading": 343.7
+  },
+  {
+   "file": "IMG_3492",
+   "x": 6.3,
+   "y": 22.7,
+   "room": "kitchen",
+   "heading": 326.1
+  },
+  {
+   "file": "IMG_3493",
+   "x": 6.0,
+   "y": 23.2,
+   "room": "kitchen",
+   "heading": 282.9
+  },
+  {
+   "file": "IMG_3494",
+   "x": 6.2,
+   "y": 23.0,
+   "room": "kitchen",
+   "heading": 269.7
+  },
+  {
+   "file": "IMG_3495",
+   "x": 2.6,
+   "y": 21.2,
+   "room": "living",
+   "heading": 271.0
+  },
+  {
+   "file": "IMG_3496",
+   "x": 1.7,
+   "y": 21.8,
+   "room": "porch",
+   "heading": 194.5
+  },
+  {
+   "file": "IMG_3497",
+   "x": 4.0,
+   "y": 6.0,
+   "room": "parking",
+   "heading": 94.3
+  },
+  {
+   "file": "IMG_3498",
+   "x": 6.5,
+   "y": 6.0,
+   "room": "parking",
+   "heading": 273.4
+  },
+  {
+   "file": "IMG_3499",
+   "x": 8.0,
+   "y": 7.6,
+   "room": "walk-e",
+   "heading": 359.5
+  },
+  {
+   "file": "IMG_3500",
+   "x": 8.1,
+   "y": 10.0,
+   "room": "walk-e",
+   "heading": 270.0
+  },
+  {
+   "file": "IMG_3501",
+   "x": 8.0,
+   "y": 12.0,
+   "room": "walk-e",
+   "heading": 0.0
+  },
+  {
+   "file": "IMG_3502",
+   "x": 8.0,
+   "y": 15.0,
+   "room": "walk-e",
+   "heading": 357.1
+  },
+  {
+   "file": "IMG_3503",
+   "x": 8.0,
+   "y": 18.5,
+   "room": "walk-e",
+   "heading": 359.6
+  },
+  {
+   "file": "IMG_3504",
+   "x": 8.0,
+   "y": 20.5,
+   "room": "walk-e",
+   "heading": 356.4
+  },
+  {
+   "file": "IMG_3505",
+   "x": 8.0,
+   "y": 23.0,
+   "room": "walk-e",
+   "heading": 270.0
+  },
+  {
+   "file": "IMG_3506",
+   "x": 8.1,
+   "y": 24.5,
+   "room": "walk-e",
+   "heading": 350.0
+  },
+  {
+   "file": "IMG_3507",
+   "x": 8.0,
+   "y": 25.9,
+   "room": "walk-n",
+   "heading": 350.0
+  },
+  {
+   "file": "IMG_3508",
+   "x": 8.0,
+   "y": 26.0,
+   "room": "walk-n",
+   "heading": 273.1
+  },
+  {
+   "file": "IMG_3509",
+   "x": 8.1,
+   "y": 24.0,
+   "room": "walk-e",
+   "heading": 178.9
+  },
+  {
+   "file": "IMG_3510",
+   "x": 2.6,
+   "y": 21.6,
+   "room": "living",
+   "heading": 124.5
+  }
+ ],
+ "roof": {
+  "type": "hip-front-gable",
+  "overhang": {
+   "value": 0.6,
+   "source": "assumption",
+   "confidence": "low"
+  },
+  "pitchDeg": {
+   "value": 22,
+   "source": "assumption",
+   "confidence": "low"
+  }
+ }
+}

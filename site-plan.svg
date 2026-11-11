@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 2980" class="plan plan-site" font-family="system-ui, sans-serif" xmlns:c2pa="http://c2pa.org/manifest">
+<style>.room text{fill:#2c2c2a;text-anchor:middle}.room .nm{font-size:30px;font-weight:600}.room .dm{font-size:22px;fill:#5f5e5a}.est{font-style:italic}
+.wall{fill:#2c2c2a}.plotwall{fill:#8a8370}.win line{stroke:#1d6fa5;stroke-width:4}.door line,.swing{stroke:#5f5e5a;stroke-width:3;fill:none}.swing{stroke-dasharray:8 6}
+.arch line{stroke:#5f5e5a;stroke-width:3;stroke-dasharray:12 8}.gate line{stroke:#5f5e5a;stroke-width:6;stroke-dasharray:20 10}
+.selected polygon{stroke:#d85a30;stroke-width:8}.pin circle{fill:#d85a30;stroke:#fff;stroke-width:3}.pin path{fill:#d85a30;fill-opacity:.25}.pin{cursor:pointer}</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<g data-room="bd2" class="room"><polygon points="390,2110 910,2110 910,1695 390,1695" fill="#f7f7f4" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="ensuite" class="room"><polygon points="390,1695 625,1695 625,1480 390,1480" fill="#e3ddd3" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="wc1" class="room"><polygon points="625,1695 765,1695 765,1480 625,1480" fill="#e3ddd3" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="bd1" class="room"><polygon points="390,1480 765,1480 765,1105 390,1105" fill="#f7f7f4" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="hall" class="room"><polygon points="765,1695 910,1695 910,1105 765,1105" fill="#f7f7f4" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="living" class="room"><polygon points="390,1105 910,1105 910,610 390,610" fill="#ece6dc" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="kitchen" class="room"><polygon points="390,610 910,610 910,290 390,290" fill="#ece6dc" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="owc" class="room"><polygon points="160,320 340,320 340,160 160,160" fill="#e3ddd3" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="porch" class="room"><polygon points="270,1105 390,1105 390,610 270,610" fill="#efeae2" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="walk-w" class="room"><polygon points="160,2110 390,2110 390,1105 270,1105 270,610 390,610 390,320 160,320" fill="#e2d7c7" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="walk-e" class="room"><polygon points="910,2110 1020,2110 1020,290 910,290" fill="#e2d7c7" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="walk-n" class="room"><polygon points="340,320 390,320 390,290 1020,290 1020,160 340,160" fill="#e2d7c7" stroke="#d3d1c7" stroke-width="2"/></g>
+<g data-room="parking" class="room"><polygon points="160,2820 1020,2820 1020,2110 160,2110" fill="#e2d7c7" stroke="#d3d1c7" stroke-width="2"/></g>
+<polygon class="wall" points="380,2100 590,2100 590,2120 380,2120"/>
+<polygon class="wall" points="720,2100 920,2100 920,2120 720,2120"/>
+<polygon class="wall" points="900,2120 900,1960 920,1960 920,2120"/>
+<polygon class="wall" points="900,1850 900,1685 920,1685 920,1850"/>
+<polygon class="wall" points="900,1705 900,1565 920,1565 920,1705"/>
+<polygon class="wall" points="900,1465 900,1305 920,1305 920,1465"/>
+<polygon class="wall" points="900,1205 900,1095 920,1095 920,1205"/>
+<polygon class="wall" points="900,1115 900,855 920,855 920,1115"/>
+<polygon class="wall" points="900,695 900,600 920,600 920,695"/>
+<polygon class="wall" points="900,620 900,520 920,520 920,620"/>
+<polygon class="wall" points="900,380 900,280 920,280 920,380"/>
+<polygon class="wall" points="382.5,1687.5 537.5,1687.5 537.5,1702.5 382.5,1702.5"/>
+<polygon class="wall" points="597.5,1687.5 632.5,1687.5 632.5,1702.5 597.5,1702.5"/>
+<polygon class="wall" points="617.5,1687.5 772.5,1687.5 772.5,1702.5 617.5,1702.5"/>
+<polygon class="wall" points="757.5,1687.5 797.5,1687.5 797.5,1702.5 757.5,1702.5"/>
+<polygon class="wall" points="872.5,1687.5 917.5,1687.5 917.5,1702.5 872.5,1702.5"/>
+<polygon class="wall" points="380,2120 380,1995 400,1995 400,2120"/>
+<polygon class="wall" points="380,1795 380,1685 400,1685 400,1795"/>
+<polygon class="wall" points="380,1705 380,1600 400,1600 400,1705"/>
+<polygon class="wall" points="380,1560 380,1470 400,1470 400,1560"/>
+<polygon class="wall" points="380,1490 380,1365 400,1365 400,1490"/>
+<polygon class="wall" points="380,1235 380,1095 400,1095 400,1235"/>
+<polygon class="wall" points="380,1115 380,970 400,970 400,1115"/>
+<polygon class="wall" points="380,840 380,740 400,740 400,840"/>
+<polygon class="wall" points="380,660 380,600 400,600 400,660"/>
+<polygon class="wall" points="380,620 380,510 400,510 400,620"/>
+<polygon class="wall" points="380,390 380,280 400,280 400,390"/>
+<polygon class="wall" points="617.5,1702.5 617.5,1472.5 632.5,1472.5 632.5,1702.5"/>
+<polygon class="wall" points="382.5,1472.5 632.5,1472.5 632.5,1487.5 382.5,1487.5"/>
+<polygon class="wall" points="617.5,1472.5 772.5,1472.5 772.5,1487.5 617.5,1487.5"/>
+<polygon class="wall" points="757.5,1702.5 757.5,1612.5 772.5,1612.5 772.5,1702.5"/>
+<polygon class="wall" points="757.5,1552.5 757.5,1472.5 772.5,1472.5 772.5,1552.5"/>
+<polygon class="wall" points="757.5,1487.5 757.5,1237.5 772.5,1237.5 772.5,1487.5"/>
+<polygon class="wall" points="757.5,1162.5 757.5,1097.5 772.5,1097.5 772.5,1162.5"/>
+<polygon class="wall" points="382.5,1097.5 772.5,1097.5 772.5,1112.5 382.5,1112.5"/>
+<polygon class="wall" points="757.5,1097.5 782.5,1097.5 782.5,1112.5 757.5,1112.5"/>
+<polygon class="wall" points="892.5,1097.5 917.5,1097.5 917.5,1112.5 892.5,1112.5"/>
+<polygon class="wall" points="382.5,602.5 647.5,602.5 647.5,617.5 382.5,617.5"/>
+<polygon class="wall" points="872.5,602.5 917.5,602.5 917.5,617.5 872.5,617.5"/>
+<polygon class="wall" points="380,280 920,280 920,300 380,300"/>
+<polygon class="wall" points="150,310 220,310 220,330 150,330"/>
+<polygon class="wall" points="275,310 350,310 350,330 275,330"/>
+<polygon class="wall" points="330,330 330,220 350,220 350,330"/>
+<polygon class="wall" points="330,190 330,150 350,150 350,190"/>
+<polygon class="wall" points="150,150 350,150 350,170 150,170"/>
+<polygon class="wall" points="150,330 150,150 170,150 170,330"/>
+<polygon class="plotwall" points="150,2810 1030,2810 1030,2830 150,2830"/>
+<polygon class="plotwall" points="1010,2830 1010,150 1030,150 1030,2830"/>
+<polygon class="plotwall" points="1030,170 150,170 150,150 1030,150"/>
+<polygon class="plotwall" points="170,150 170,2180 150,2180 150,150"/>
+<polygon class="plotwall" points="170,2560 170,2830 150,2830 150,2560"/>
+<g data-opening="door-front" class="door"><line x1="390" y1="750" x2="490" y2="750"/><path class="swing" d="M490,750 A100,100 0 0 0 390,650"/></g>
+<g data-opening="win-living-w" class="win"><line x1="385" y1="830" x2="385" y2="980"/><line x1="395" y1="830" x2="395" y2="980"/></g>
+<g data-opening="win-living-e" class="win"><line x1="915" y1="865" x2="915" y2="685"/><line x1="905" y1="865" x2="905" y2="685"/></g>
+<g data-opening="open-hall" class="arch"><line x1="775" y1="1105" x2="900" y2="1105"/></g>
+<g data-opening="arch-kitchen" class="arch"><line x1="880" y1="610" x2="640" y2="610"/></g>
+<g data-opening="win-kitchen-w" class="win"><line x1="385" y1="380" x2="385" y2="520"/><line x1="395" y1="380" x2="395" y2="520"/></g>
+<g data-opening="win-kitchen-e" class="win"><line x1="915" y1="530" x2="915" y2="370"/><line x1="905" y1="530" x2="905" y2="370"/></g>
+<g data-opening="win-hall-e1" class="win"><line x1="915" y1="1575" x2="915" y2="1455"/><line x1="905" y1="1575" x2="905" y2="1455"/></g>
+<g data-opening="win-hall-e2" class="win"><line x1="915" y1="1315" x2="915" y2="1195"/><line x1="905" y1="1315" x2="905" y2="1195"/></g>
+<g data-opening="door-bd1" class="door"><line x1="765" y1="1245" x2="675" y2="1245"/><path class="swing" d="M675,1245 A90,90 0 0 1 765,1155"/></g>
+<g data-opening="door-wc1" class="door"><line x1="765" y1="1545" x2="690" y2="1545"/><path class="swing" d="M690,1545 A75,75 0 0 0 765,1620"/></g>
+<g data-opening="door-bd2" class="door"><line x1="790" y1="1695" x2="790" y2="1785"/><path class="swing" d="M790,1785 A90,90 0 0 0 880,1695"/></g>
+<g data-opening="win-bd1-w" class="win"><line x1="385" y1="1225" x2="385" y2="1375"/><line x1="395" y1="1225" x2="395" y2="1375"/></g>
+<g data-opening="door-ensuite" class="door"><line x1="605" y1="1695" x2="605" y2="1770"/><path class="swing" d="M605,1770 A75,75 0 0 1 530,1695"/></g>
+<g data-opening="win-ensuite-w" class="win"><line x1="385" y1="1550" x2="385" y2="1610"/><line x1="395" y1="1550" x2="395" y2="1610"/></g>
+<g data-opening="win-bd2-s" class="win"><line x1="580" y1="2115" x2="730" y2="2115"/><line x1="580" y1="2105" x2="730" y2="2105"/></g>
+<g data-opening="win-bd2-e" class="win"><line x1="915" y1="1970" x2="915" y2="1840"/><line x1="905" y1="1970" x2="905" y2="1840"/></g>
+<g data-opening="win-bd2-w" class="win"><line x1="385" y1="1785" x2="385" y2="2005"/><line x1="395" y1="1785" x2="395" y2="2005"/></g>
+<g data-opening="door-owc" class="door"><line x1="210" y1="320" x2="210" y2="245"/><path class="swing" d="M210,245 A75,75 0 0 1 285,320"/></g>
+<g data-opening="win-owc-e" class="win"><line x1="345" y1="230" x2="345" y2="180"/><line x1="335" y1="230" x2="335" y2="180"/></g>
+<g data-opening="gate" class="gate"><line x1="160" y1="2170" x2="160" y2="2570"/></g>
+<g data-room="bd2" class="room label" pointer-events="none"><text class="nm" x="650" y="1888.5">BD 2 (main)</text><text class="dm" x="650" y="1918.5"><tspan class="est">5.0 × 4.0 m</tspan></text><text class="dm" x="650" y="1944.5"><tspan class="est">19.9 m²</tspan></text></g>
+<g data-room="ensuite" class="room label" pointer-events="none"><text class="nm" x="507.5" y="1573.5">En-suite</text><text class="dm" x="507.5" y="1603.5"><tspan class="est">2.2 × 2.0 m</tspan></text><text class="dm" x="507.5" y="1629.5"><tspan class="est">4.4 m²</tspan></text></g>
+<g data-room="wc1" class="room label" pointer-events="none"><text class="nm" x="695" y="1573.5" font-size="22">W/C 1</text><text class="dm" x="695" y="1603.5"><tspan class="est">1.2 × 2.0 m</tspan></text><text class="dm" x="695" y="1629.5"><tspan class="est">2.5 m²</tspan></text></g>
+<g data-room="bd1" class="room label" pointer-events="none"><text class="nm" x="577.5" y="1278.5">BD 1</text><text class="dm" x="577.5" y="1308.5"><tspan class="est">3.6 × 3.6 m</tspan></text><text class="dm" x="577.5" y="1334.5"><tspan class="est">12.9 m²</tspan></text></g>
+<g data-room="hall" class="room label" pointer-events="none"><text class="nm" x="837.5" y="1386" font-size="22">Hallway</text><text class="dm" x="837.5" y="1416"><tspan class="est">1.3 × 5.7 m</tspan></text><text class="dm" x="837.5" y="1442"><tspan class="est">7.3 m²</tspan></text></g>
+<g data-room="living" class="room label" pointer-events="none"><text class="nm" x="650" y="843.5">Living / dining</text><text class="dm" x="650" y="873.5"><tspan class="est">5.0 × 4.8 m</tspan></text><text class="dm" x="650" y="899.5"><tspan class="est">24.0 m²</tspan></text></g>
+<g data-room="kitchen" class="room label" pointer-events="none"><text class="nm" x="650" y="436">Kitchen</text><text class="dm" x="650" y="466"><tspan class="est">5.0 × 3.0 m</tspan></text><text class="dm" x="650" y="492"><tspan class="est">15.1 m²</tspan></text></g>
+<g data-room="owc" class="room label" pointer-events="none"><text class="nm" x="250" y="226">Outside W/C</text><text class="dm" x="250" y="256"><tspan class="est">1.6 × 1.4 m</tspan></text><text class="dm" x="250" y="282"><tspan class="est">2.2 m²</tspan></text></g>
+<g data-room="porch" class="room label" pointer-events="none"><text class="nm" x="330" y="843.5" font-size="22">Porch</text></g>
+<g data-room="walk-w" class="room label" pointer-events="none"><text class="nm" x="215" y="1201">West walkway</text></g>
+<g data-room="walk-e" class="room label" pointer-events="none"><text class="nm" x="965" y="1186" font-size="22">East walkway</text></g>
+<g data-room="walk-n" class="room label" pointer-events="none"><text class="nm" x="680" y="226">Back walkway</text></g>
+<g data-room="parking" class="room label" pointer-events="none"><text class="nm" x="590" y="2451">Parking</text></g>
+<g id="north-arrow" transform="translate(100,2880.0000000000005) rotate(-82)"><path d="M0,-50 L16,20 L0,8 L-16,20 Z" fill="#2c2c2a"/><text x="0" y="-60" font-size="26" text-anchor="middle" fill="#2c2c2a">N</text></g>
+<g id="scale-bar"><rect x="180" y="2930.0000000000005" width="100" height="10" fill="#2c2c2a"/><rect x="280" y="2930.0000000000005" width="100" height="10" fill="#fff" stroke="#2c2c2a" stroke-width="2"/><text x="180" y="2922.0000000000005" font-size="20" fill="#2c2c2a">0</text><text x="380" y="2922.0000000000005" font-size="20" fill="#2c2c2a" text-anchor="middle">2 m</text></g>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo4ZTc5MGViMy1mYzc5LTQwN2ItYWI5My0zZDYxNTM1YzdmOGYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAnCKS+BWeaUE7h9IMEXZ4sAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpiZTRhMThjNC1lNWU1LTRjYzEtYWRjZC0zYjE5MzFhOWI4YTJscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo8StQKiYDx1WiUsSqZ6G5vwAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg9zD4VEO74K4Zyf4XQpY+RxbSKStMl9F0ifxu5oeaseOkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaK9hWbHlZObsms48H60oa9gAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIDokXtsk8/8MbXj2NKmX7BW9+5GYiLYU9g0uFe94JLGcZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GTG3Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjhlNzkwZWIzLWZjNzktNDA3Yi1hYjkzLTNkNjE1MzVjN2Y4Zi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjVkYTA4ZDNmLTA1MjQtNDA0YS1iOWJkLWRiZmE5ZmVmOGY0MnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCD3MPhUQ7vgrhnJ/hdClj5HFtIpK0yX0XSJ/G7mh5qx46JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggUarjoha8DG3QAY7VLIvmLus5fTY6YfLJ8gTtFG9Q8jaiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggLfUHMLFqzaMiUsvmXyToKLI/U1gJMcTHdY/FbkXLXex0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQHjWtYdyGMPipF9LoZbr5+2U1zB5QL7Q1nuPuPb+0sise7hQXyk9HqqWxVAeVkkEJWOrkzJdGMbszPQPQVe8Xcg=</c2pa:manifest></metadata></svg>

@@ -1,0 +1,6 @@
+# Scratch workspace
+_work/
+# Python / OS clutter
+__pycache__/
+*.pyc
+.DS_Store

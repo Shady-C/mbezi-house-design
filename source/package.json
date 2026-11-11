@@ -1,0 +1,24 @@
+{
+  "name": "mbezi-house",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\"",
+    "smoke": "node tools/sync-web.mjs && playwright test --reporter=line",
+    "export": "node tools/sync-web.mjs && node tools/export.mjs --out dist",
+    "export:check": "node --test test/export.check.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "playwright": "^1.65.0"
+  },
+  "type": "module",
+  "private": true
+}
