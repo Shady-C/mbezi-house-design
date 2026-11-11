@@ -1,8 +1,9 @@
 // Minimal static server for web/ (tests and exports).
+import { fileURLToPath } from 'node:url';
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
-const root = new URL('../web/', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../web/', import.meta.url));
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json',
   '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.css': 'text/css', '.md': 'text/markdown' };
 const port = Number(process.argv[2] || 4173);

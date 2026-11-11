@@ -1,6 +1,7 @@
 // Copies tested modules, data and three.js into web/ so the page runs exactly the tested code.
+import { fileURLToPath } from 'node:url';
 import { cpSync, mkdirSync } from 'node:fs';
-const r = (p) => new URL('../' + p, import.meta.url).pathname;
+const r = (p) => fileURLToPath(new URL('../' + p, import.meta.url));
 mkdirSync(r('web/vendor'), { recursive: true });
 mkdirSync(r('web/data'), { recursive: true });
 cpSync(r('src'), r('web/src'), { recursive: true });

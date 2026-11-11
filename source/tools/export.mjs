@@ -1,5 +1,6 @@
 // Exports plans (SVG + PDF), the 3D model (GLB) and renders (PNG) into --out (default dist/).
 // Usage: node tools/export.mjs --out dist
+import { fileURLToPath } from 'node:url';
 import { mkdirSync, writeFileSync, readFileSync, copyFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { chromium } from 'playwright';
@@ -7,7 +8,7 @@ import { renderPlan, clearSize } from '../src/plan/plan-svg.js';
 import { deriveWalls } from '../src/model/geometry.js';
 
 const out = process.argv.includes('--out') ? process.argv[process.argv.indexOf('--out') + 1] : 'dist';
-const root = new URL('../', import.meta.url).pathname;
+const root = fileURLToPath(new URL('../', import.meta.url));
 const o = (p) => `${root}${out}/${p}`;
 mkdirSync(o('renders'), { recursive: true });
 
