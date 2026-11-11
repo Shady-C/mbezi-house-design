@@ -87,3 +87,16 @@ test('compound wall stands outside the plot line (inner face on the line)', () =
   const hit = ray.intersectObjects(pw, true)[0];
   assert.ok(hit && hit.distance >= 0.94, `hit at ${hit && hit.distance}`);
 });
+
+test('porch floor, outside W/C slab and bathroom doors are found by layout, not by room id', async () => {
+  const { freshHouse, renameRooms, RENAMED } = await import('./helpers.mjs');
+  const g = buildHouse(THREE, renameRooms(freshHouse(), RENAMED), { roof: true, ceilings: true, cutHeight: null });
+  const byName = (n) => g.children.find((c) => c.name === n);
+  assert.equal(byName('floor:veranda').position.y, 0.015);
+  assert.ok(byName('slab:shed'), 'outside W/C slab');
+  const door = (id) => byName(`opening:${id}`);
+  const colours = (id) => new Set(door(id).children.flatMap((m) => [m.material].flat()).map((m) => m.color.getHex()));
+  const orig = full();
+  const origColours = (id) => new Set(orig.children.find((c) => c.name === `opening:${id}`).children.flatMap((m) => [m.material].flat()).map((m) => m.color.getHex()));
+  for (const o of h.openings.filter((o) => o.type === 'door')) assert.deepEqual(colours(o.id), origColours(o.id), o.id);
+});

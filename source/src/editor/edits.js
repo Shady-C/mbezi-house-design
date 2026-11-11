@@ -1,6 +1,8 @@
 // Pure edits on a house. Never mutates its input; a rejected edit returns the input unchanged with errors.
 import { validateHouse } from '../model/schema.js';
-import { v, bbox, deriveWalls, openingRect, edgeOf, distToPolygon } from '../model/geometry.js';
+import { v, bbox, deriveWalls, openingRect, edgeOf, distToPolygon, houseRooms, siteRoles } from '../model/geometry.js';
+
+export { houseRooms };
 
 const EPS = 1e-6;
 const MIN_EDGE = 0.3;     // smallest indoor wall length
@@ -37,13 +39,6 @@ export function sideWall(h, roomId, side) {
   return ws.length ? ws[0].id : null;
 }
 
-// Rooms that make up the house itself: everything not touching the compound wall (house rooms + porch).
-export function houseRooms(h) {
-  const pb = bbox(h.plot.polygon);
-  const onPlot = (p) => Math.abs(p[0] - pb.minX) < EPS || Math.abs(p[0] - pb.maxX) < EPS || Math.abs(p[1] - pb.minY) < EPS || Math.abs(p[1] - pb.maxY) < EPS;
-  return h.rooms.filter((r) => !r.polygon.some(onPlot));
-}
-
 // Wall spans (in metres along the opening's room edge) the opening may sit in.
 function edgeSpans(h, o, walls) {
   const room = h.rooms.find((r) => r.id === o.room);
@@ -63,6 +58,8 @@ function edgeSpans(h, o, walls) {
 }
 
 const overlap = (a0, a1, b0, b1) => Math.min(a1, b1) - Math.max(a0, b0);
+// A value the editor changed on its own (not typed by you): keeps its confidence, marked 'adjusted'.
+const adjusted = (d, value) => (typeof d === 'number' ? r6(value) : { ...d, value: r6(value), source: 'adjusted' });
 
 // Slide (or, for archways, shrink) openings so each sits within one wall. Mutates `next`.
 function fitOpenings(next) {
@@ -78,11 +75,11 @@ function fitOpenings(next) {
       || [...spans].sort((a, b) => overlap(off, off + w, b[0], b[1]) - overlap(off, off + w, a[0], a[1]))[0];
     const room2 = hi - lo - 0.1;
     if (w > room2) {
-      if (o.type === 'archway' && room2 >= 0.6) { w = room2; o.width = user(w); }
+      if (o.type === 'archway' && room2 >= 0.6) { w = room2; o.width = adjusted(o.width, w); }
       else { errors.push(`${label(o)} is wider than wall (${(hi - lo).toFixed(2)} m)`); continue; }
     }
     off = Math.min(Math.max(off, lo + 0.05), hi - w - 0.05);
-    o.offset = { ...o.offset, value: r6(off) };
+    if (Math.abs(off - v(o.offset)) > EPS) o.offset = adjusted(o.offset, off);
   }
   return errors;
 }
@@ -118,7 +115,7 @@ function checkOpenings(next, only = null) {
 }
 
 function checkRooms(before, next, derivedOutdoor = false) {
-  const errors = derivedOutdoor ? checkSite(next) : [];
+  const errors = derivedOutdoor ? checkSite(before, next) : [];
   next.rooms.forEach((r, i) => {
     const old = before.rooms[i];
     if (derivedOutdoor && r.kind !== 'indoor') return;
@@ -168,13 +165,21 @@ function dedupe(poly) {
   });
 }
 
+// The site's rooms in `next`, found from the layout of `before` (the edit may have moved them).
+function roles(before, next) {
+  const r = siteRoles(before);
+  const get = (room) => room && next.rooms.find((x) => x.id === room.id);
+  return { park: get(r.parking), ww: get(r.walkW), we: get(r.walkE), wn: get(r.walkN), porch: get(r.porch), owc: get(r.outbuilding),
+    house: r.house.map(get) };
+}
+
 // Walkways and parking are what's left between the house, porch, outside W/C and compound wall:
-// rebuild them from those so they follow every edit. Only for this layout (ids below); otherwise unchanged.
-function rebuildOutdoor(next) {
-  const get = (id) => next.rooms.find((r) => r.id === id);
-  const [park, ww, we, wn, porch, owc] = ['parking', 'walk-w', 'walk-e', 'walk-n', 'porch', 'owc'].map(get);
+// rebuild them from those so they follow every edit. Only for this layout (one porch, one outbuilding,
+// parking at the front, walkways on three sides); otherwise unchanged.
+function rebuildOutdoor(before, next) {
+  const { park, ww, we, wn, porch, owc, house } = roles(before, next);
   if (!park || !ww || !we || !wn || !porch || !owc) return false;
-  const hb = bbox(next.rooms.filter((r) => r.kind === 'indoor' && r.id !== 'owc').flatMap((r) => r.polygon));
+  const hb = bbox(house.flatMap((r) => r.polygon));
   const pb = bbox(next.plot.polygon), pc = bbox(porch.polygon), ob = bbox(owc.polygon);
   const rect = (x0, y0, x1, y1) => [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
   park.polygon = rect(pb.minX, pb.minY, pb.maxX, hb.minY);
@@ -187,10 +192,10 @@ function rebuildOutdoor(next) {
 
 const MIN_WALK = 0.3;
 // The real constraints once walkways are derived: the house fits inside the compound with room to walk round it.
-function checkSite(next) {
-  const get = (id) => next.rooms.find((r) => r.id === id);
-  const hb = bbox(next.rooms.filter((r) => r.kind === 'indoor' && r.id !== 'owc').flatMap((r) => r.polygon));
-  const pb = bbox(next.plot.polygon), pc = bbox(get('porch').polygon), ob = bbox(get('owc').polygon);
+function checkSite(before, next) {
+  const { porch, owc, house } = roles(before, next);
+  const hb = bbox(house.flatMap((r) => r.polygon));
+  const pb = bbox(next.plot.polygon), pc = bbox(porch.polygon), ob = bbox(owc.polygon);
   const errors = [];
   if (pc.minX - pb.minX < MIN_WALK) errors.push(`West walkway would be narrower than ${MIN_WALK} m`);
   if (pb.maxX - hb.maxX < MIN_WALK) errors.push(`East walkway would be narrower than ${MIN_WALK} m`);
@@ -249,7 +254,9 @@ export function applyEdit(h, edit) {
     if (!w) return { house: h, errors: [`Unknown wall "${edit.wallId}"`] };
     if (!Number.isFinite(edit.delta)) return { house: h, errors: ['Enter a number'] };
     moveWall(h, next, w, edit.delta);
-    const derived = rebuildOutdoor(next);
+    const target = edit.roomId && next.rooms.find((r) => r.id === edit.roomId);
+    if (target) target.estimate = { ...target.estimate, edited: true, source: 'user', confidence: 'high' };
+    const derived = rebuildOutdoor(h, next);
     errors.push(...checkRooms(h, next, derived));
     if (!errors.length) errors.push(...fitOpenings(next));
     if (!errors.length) errors.push(...checkOpenings(next));
@@ -257,7 +264,7 @@ export function applyEdit(h, edit) {
     const dx = edit.dx || 0, dy = edit.dy || 0;
     if (!Number.isFinite(dx) || !Number.isFinite(dy)) return { house: h, errors: ['Enter a number'] };
     moveHouse(h, next, dx, dy);
-    const derived = rebuildOutdoor(next);
+    const derived = rebuildOutdoor(h, next);
     errors.push(...checkRooms(h, next, derived));
     if (!errors.length) errors.push(...fitOpenings(next));
     if (!errors.length) errors.push(...checkOpenings(next));

@@ -58,7 +58,7 @@ function panel() {
   if (room && room.kind === 'indoor') {
     const c = clearSize(room, deriveWalls(h));
     p.innerHTML = `<h3>${esc(room.name)}</h3>
-      <p class="note">Clear sizes, wall face to wall face. ${room.estimate?.edited ? 'Edited by you.' : `Estimated (${esc(room.estimate?.confidence || 'low')} confidence).`}</p>
+      <p class="note">Clear sizes, wall face to wall face. ${roomStatus(room.estimate)}</p>
       ${num('f-width', 'Width, west–east (m)', c.w.toFixed(2))}
       <div class="field"><span class="note">Change width by moving</span>${choice('f-wside', [['east', 'east wall'], ['west', 'west wall']], sides.w)}</div>
       ${num('f-depth', 'Depth, front–back (m)', c.d.toFixed(2))}
@@ -104,6 +104,13 @@ function panel() {
   }
 }
 
+function roomStatus(e = {}) {
+  const conf = `${esc(e.confidence || 'low')} confidence`;
+  if (e.source === 'user') return 'Your size.';
+  if (e.edited) return `Adjusted when you moved a shared wall (estimate, ${conf}).`;
+  return `Estimated (${conf}).`;
+}
+
 function plotSide(side) {
   const pb = app.house.plot.polygon;
   const axis = side === 'east' ? 0 : 1;
@@ -130,7 +137,7 @@ function moveSide(room, side, delta) {
   const wallId = sideWall(app.house, room.id, side);
   if (!wallId) return showErrors([`${room.name} has no ${side} wall to move`]);
   const sign = side === 'east' || side === 'north' ? 1 : -1;
-  commit({ kind: 'moveWall', wallId, delta: sign * delta });
+  commit({ kind: 'moveWall', wallId, delta: sign * delta, roomId: room.id });
 }
 
 function showErrors(errs) {

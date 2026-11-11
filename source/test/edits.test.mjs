@@ -161,3 +161,42 @@ test('changing the plot depth moves the outside W/C instead of stretching it', (
     assert.ok(Math.abs(o.maxY - bbox(house.plot.polygon).maxY) < 1e-6);
   }
 });
+
+test('the room you resize becomes your measurement; rooms resized as a side effect keep their confidence', () => {
+  const h = fresh();
+  const { house, errors } = applyEdit(h, { kind: 'moveWall', wallId: sideWall(h, 'bd1', 'north'), delta: 0.3, roomId: 'bd1' });
+  assert.deepEqual(errors, []);
+  assert.equal(room(house, 'bd1').estimate.confidence, 'high');
+  assert.equal(room(house, 'bd1').estimate.source, 'user');
+  const others = house.rooms.filter((r) => r.id !== 'bd1' && r.estimate?.edited);
+  assert.ok(others.length > 0, 'a neighbour was resized');
+  for (const r of others) assert.equal(r.estimate.confidence, room(h, r.id).estimate.confidence, r.id);
+});
+
+test('openings moved or shrunk automatically are marked adjusted, not as your measurement', () => {
+  const h = fresh();
+  const { house, errors } = applyEdit(h, { kind: 'moveWall', wallId: sideWall(h, 'bd1', 'east'), delta: 0.3 });
+  assert.deepEqual(errors, []);
+  const arch = house.openings.find((o) => o.id === 'open-hall');
+  assert.ok(v(arch.width) < v(h.openings.find((o) => o.id === 'open-hall').width), 'archway shrank');
+  assert.equal(arch.width.source, 'adjusted');
+  assert.equal(arch.width.confidence, 'low');
+
+  const h2 = fresh();
+  const r2 = applyEdit(h2, { kind: 'moveWall', wallId: sideWall(h2, 'ensuite', 'west'), delta: 0.6 });
+  assert.deepEqual(r2.errors, []);
+  const before = h2.openings.find((o) => o.id === 'door-ensuite'), after = r2.house.openings.find((o) => o.id === 'door-ensuite');
+  assert.notEqual(v(after.offset), v(before.offset), 'door slid');
+  assert.equal(after.offset.source, 'adjusted');
+  assert.equal(after.offset.confidence, before.offset.confidence);
+});
+
+test('walkways and parking follow the house even when the rooms have other ids', async () => {
+  const { renameRooms, RENAMED } = await import('./helpers.mjs');
+  const h = renameRooms(fresh(), RENAMED);
+  const { house, errors } = applyEdit(h, { kind: 'moveHouse', dx: 0, dy: 0.5 });
+  assert.deepEqual(errors, []);
+  assert.ok(Math.abs(bbox(room(house, 'yard').polygon).maxY - 7.6) < 1e-6);
+  const tooFar = applyEdit(h, { kind: 'moveHouse', dx: -5, dy: 0 });
+  assert.ok(tooFar.errors.some((e) => /West walkway would be narrower than/.test(e)), tooFar.errors.join('; '));
+});

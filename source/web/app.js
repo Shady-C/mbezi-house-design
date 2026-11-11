@@ -14,6 +14,7 @@ function show(view) {
   for (const [k, id] of Object.entries(VIEWS)) $('#' + id).hidden = k !== view;
   for (const b of $$('nav button')) b.setAttribute('aria-selected', String(b.dataset.view === view));
   if (view === 'model') ensureViewer();
+  app.viewer?.setActive(view === 'model');
   app.onShow?.[view]?.();
 }
 for (const b of $$('nav button')) b.addEventListener('click', () => { history.replaceState(null, '', '#' + b.dataset.view); show(b.dataset.view); });
@@ -27,7 +28,8 @@ export function drawPlan() {
     const c = clearSize(r, walls);
     const e = r.estimate || {};
     const conf = ['high', 'medium', 'low'].includes(e.confidence) ? e.confidence : '';
-    return `<tr><td>${esc(r.name)}</td><td class="num">${c.w.toFixed(1)} × ${c.d.toFixed(1)} m <span class="conf ${conf}">${e.edited ? 'edited' : conf}</span></td><td>${esc(e.note || '')}</td></tr>`;
+    const tag = e.source === 'user' ? 'your size' : e.edited ? 'adjusted' : conf;
+    return `<tr><td>${esc(r.name)}</td><td class="num">${c.w.toFixed(1)} × ${c.d.toFixed(1)} m <span class="conf ${conf}">${tag}</span></td><td>${esc(e.note || '')}</td></tr>`;
   }).join('');
 }
 for (const b of $$('#plan-mode button')) b.addEventListener('click', () => {
@@ -85,7 +87,7 @@ function wireWalk() {
     v.input.turn = (keys.has('ArrowRight') ? 1 : 0) - (keys.has('ArrowLeft') ? 1 : 0);
   };
   window.addEventListener('keydown', (e) => {
-    if (v.mode !== 'walk' || $('#view-3d').hidden || e.target.closest('input')) return;
+    if (v.mode !== 'walk' || $('#view-3d').hidden || !$('#lightbox').hidden || e.target.closest('input')) return;
     if (['KeyW', 'KeyA', 'KeyS', 'KeyD', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) { keys.add(e.code); sync(); e.preventDefault(); }
   });
   window.addEventListener('keyup', (e) => { keys.delete(e.code); sync(); });
@@ -135,8 +137,16 @@ app.refresh = () => {
 
 // ---------- Boot ----------
 async function boot() {
-  const res = await fetch('./data/house.json');
-  app.house = await res.json();
+  try {
+    const res = await fetch('./data/house.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    app.house = await res.json();
+  } catch (e) {
+    console.warn('house.json failed to load:', e.message);
+    $('main').innerHTML = `<div id="load-error" class="card"><strong>The house data couldn't load</strong> (${esc(e.message)}). Check your connection and reload the page.</div>`;
+    $('nav').hidden = true;
+    return;
+  }
   drawPlan();
   const extras = await Promise.allSettled([import('./photos.js'), import('./editor.js')]);
   for (const r of extras) if (r.status === 'fulfilled') r.value.init?.(app);

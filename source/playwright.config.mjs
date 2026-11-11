@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-const launchOptions = { executablePath: '/usr/bin/google-chrome', args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] };
+import { launchOptions } from './tools/chrome.mjs';
 export default defineConfig({
   testDir: 'test', testMatch: '*.spec.mjs', timeout: 60000,
   webServer: { command: 'node tools/sync-web.mjs && node tools/serve.mjs 4173', port: 4173, reuseExistingServer: true },

@@ -223,3 +223,85 @@ test('outdoor sizes: parking depth can be corrected', async ({ page }) => {
   const y = await page.evaluate(() => Math.min(...window.app.house.rooms.find((r) => r.id === 'bd2').polygon.map((p) => p[1])));
   expect(Math.abs(y - 7.6)).toBeLessThan(0.02);
 });
+
+test('if the house data cannot load, the page says so instead of staying blank', async ({ page }) => {
+  await page.route('**/data/house.json', (r) => r.fulfill({ status: 404, body: 'not found' }));
+  await page.goto('/');
+  await expect(page.locator('#load-error')).toBeVisible();
+  await expect(page.locator('#load-error')).toContainText("couldn't load");
+});
+
+test('arrow keys page through photos without turning the walker behind them', async ({ page }) => {
+  await open(page);
+  await page.click('#tab-3d');
+  await page.waitForFunction(() => window.app.viewer);
+  await page.click('[data-mode="walk"]');
+  await page.evaluate(() => window.app.viewer.setPose([4.9, 9.2], 0));
+  await page.click('#photos-here');
+  await page.locator('#nearby img').first().click();
+  await expect(page.locator('#lightbox')).toBeVisible();
+  const src0 = await page.locator('#lb-img').getAttribute('src');
+  await page.keyboard.down('ArrowRight');
+  await page.waitForTimeout(400);
+  await page.keyboard.up('ArrowRight');
+  expect(await page.locator('#lb-img').getAttribute('src')).not.toBe(src0);
+  expect(await page.evaluate(() => window.app.viewer.getPose().bearing)).toBe(0);
+});
+
+test('the 3D view stops drawing when idle or hidden, and draws again when needed', async ({ page }) => {
+  await open(page);
+  await page.click('#tab-3d');
+  await page.waitForFunction(() => window.app.viewer);
+  const renders = () => page.evaluate(() => window.app.viewer.renders);
+  await page.waitForTimeout(1500); // let the orbit damping settle
+  const idle = await renders();
+  await page.waitForTimeout(600);
+  expect(await renders()).toBe(idle);
+  await page.click('[data-mode="dollhouse"]');
+  await expect.poll(renders).toBeGreaterThan(idle);
+  // Hidden tab: a pending walk input must not keep it drawing.
+  await page.click('[data-mode="walk"]');
+  await page.click('#tab-plan');
+  const hidden = await renders();
+  await page.evaluate(() => { window.app.viewer.input.turn = 1; });
+  await page.waitForTimeout(600);
+  expect(await renders()).toBe(hidden);
+  await page.evaluate(() => { window.app.viewer.input.turn = 0; });
+});
+
+test('on a slow device the 3D view lowers its quality instead of crawling', async ({ page }) => {
+  // A weak device: frames arrive about 12 times a second.
+  await page.addInitScript(() => {
+    const raf = window.requestAnimationFrame.bind(window);
+    window.requestAnimationFrame = (cb) => setTimeout(() => raf(cb), 80);
+  });
+  await open(page);
+  await page.click('#tab-3d');
+  await page.waitForFunction(() => window.app.viewer);
+  await page.click('[data-mode="walk"]');
+  await page.evaluate(() => { window.app.viewer.input.turn = 1; });
+  await expect.poll(() => page.evaluate(() => window.app.viewer.quality), { timeout: 15000 }).toBeGreaterThan(0);
+  await page.evaluate(() => { window.app.viewer.input.turn = 0; });
+});
+
+test('the room you resized is marked as your size; rooms that moved with it as adjusted', async ({ page }) => {
+  await open(page, '#edit');
+  await page.locator('#edit-svg g.room[data-room="bd1"]:not(.label) polygon').click();
+  const depth = Number(await page.inputValue('#f-depth'));
+  await page.fill('#f-depth', String((depth + 0.3).toFixed(2)));
+  await page.press('#f-depth', 'Enter');
+  await expect(page.locator('#edit-panel')).toContainText('Your size');
+  await page.click('#tab-plan');
+  const tag = (name) => page.locator('#estimates tbody tr').filter({ has: page.locator('td:first-child', { hasText: new RegExp(`^${name}$`) }) }).locator('.conf');
+  await expect(tag('BD 1')).toHaveText('your size');
+  const tags = await page.locator('#estimates tbody .conf').allTextContents();
+  expect(tags).toContain('adjusted');
+});
+
+test('opening a photo also fetches its neighbours so paging is instant', async ({ page }) => {
+  await open(page, '#photos');
+  const fetched = new Set();
+  page.on('request', (r) => { const m = /photos\/(IMG_\d+)\.jpg$/.exec(r.url()); if (m) fetched.add(m[1]); });
+  await page.locator('#photos-svg [data-photo="IMG_3474"]').click({ force: true });
+  await expect.poll(() => [...fetched].sort()).toEqual(['IMG_3473', 'IMG_3474', 'IMG_3475']);
+});

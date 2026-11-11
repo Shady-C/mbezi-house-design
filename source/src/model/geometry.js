@@ -25,6 +25,42 @@ export function bbox(poly) {
 
 const r6 = (n) => Math.round(n * 1e6) / 1e6;
 
+// Rooms that make up the house itself: everything not touching the compound wall (house rooms + porch).
+export function houseRooms(h) {
+  const pb = bbox(h.plot.polygon);
+  const onPlot = (p) => Math.abs(p[0] - pb.minX) < EPS || Math.abs(p[0] - pb.maxX) < EPS || Math.abs(p[1] - pb.minY) < EPS || Math.abs(p[1] - pb.maxY) < EPS;
+  return h.rooms.filter((r) => !r.polygon.some(onPlot));
+}
+
+// What each room is, worked out from the layout rather than its id:
+// porches (outdoor, free-standing), outbuildings (indoor, built against the compound wall), and the
+// parking and walkways (outdoor, against the front / west / east / back compound wall). A role that
+// isn't exactly one room is null.
+export function siteRoles(h) {
+  const pb = bbox(h.plot.polygon);
+  const inHouse = new Set(houseRooms(h).map((r) => r.id));
+  const SIDES = { south: [1, pb.minY], north: [1, pb.maxY], west: [0, pb.minX], east: [0, pb.maxX] };
+  const along = (r, side) => {
+    const [axis, c] = SIDES[side];
+    return r.polygon.some((p, i) => {
+      const q = r.polygon[(i + 1) % r.polygon.length];
+      return Math.abs(p[axis] - c) < EPS && Math.abs(q[axis] - c) < EPS && Math.hypot(q[0] - p[0], q[1] - p[1]) > EPS;
+    });
+  };
+  const yard = h.rooms.filter((r) => r.kind !== 'indoor' && !inHouse.has(r.id));
+  const one = (list) => (list.length === 1 ? list[0] : null);
+  const parking = one(yard.filter((r) => along(r, 'south')));
+  const back = one(yard.filter((r) => r !== parking && along(r, 'north')));
+  const rest = yard.filter((r) => r !== parking && r !== back);
+  const porches = h.rooms.filter((r) => r.kind !== 'indoor' && inHouse.has(r.id));
+  const outbuildings = h.rooms.filter((r) => r.kind === 'indoor' && !inHouse.has(r.id));
+  return {
+    house: h.rooms.filter((r) => r.kind === 'indoor' && inHouse.has(r.id)),
+    porches, outbuildings, porch: one(porches), outbuilding: one(outbuildings),
+    parking, walkN: back, walkW: one(rest.filter((r) => along(r, 'west'))), walkE: one(rest.filter((r) => along(r, 'east'))),
+  };
+}
+
 export function edgeOf(room, i) {
   const p = room.polygon;
   return [p[i], p[(i + 1) % p.length]];

@@ -40,6 +40,8 @@ function showIdx() {
   $('#lb-img').alt = `${p.file}, ${roomName(p.room)}`;
   $('#lb-cap').textContent = `${p.file} · ${roomName(p.room)} · ${idx + 1} of ${photos.length}`;
   for (const g of document.querySelectorAll('#photos-svg .pin')) g.classList.toggle('current', g.dataset.photo === p.file);
+  // Warm the cache with the photos either side, so the arrows show them straight away.
+  for (const d of [-1, 1]) new Image().src = src(photos[(idx + d + photos.length) % photos.length].file);
 }
 
 const close = () => { $('#lightbox').hidden = true; };

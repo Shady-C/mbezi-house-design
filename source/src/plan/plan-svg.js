@@ -1,8 +1,7 @@
 // Renders the house as a standalone SVG string (floor plan or site plan).
-import { v, bbox, roomArea, deriveWalls, openingRect, solidSegments, edgeOf } from '../model/geometry.js';
+import { v, bbox, roomArea, deriveWalls, openingRect, solidSegments, edgeOf, siteRoles } from '../model/geometry.js';
 
 const S = 100; // SVG units per metre
-const HOUSE_EXCLUDE = new Set(['owc']);
 const FILL = {
   'wood-look': '#ece6dc', 'white-diagonal': '#f7f7f4', 'bath-pattern': '#e3ddd3', pavers: '#e2d7c7', 'porch-tile': '#efeae2',
 };
@@ -33,7 +32,9 @@ export function clearSize(room, walls) {
 
 export function renderPlan(h, { mode = 'floor', dims = true, pins = false, selected = null } = {}) {
   const site = mode === 'site';
-  const rooms = h.rooms.filter((r) => (site ? true : r.kind === 'indoor' ? !HOUSE_EXCLUDE.has(r.id) : r.id === 'porch'));
+  const roles = siteRoles(h);
+  const inFloor = new Set([...roles.house, ...roles.porches]);
+  const rooms = h.rooms.filter((r) => site || inFloor.has(r));
   const roomIds = new Set(rooms.map((r) => r.id));
   const allWalls = deriveWalls(h);
   const walls = allWalls.filter((w) => (w.plot ? site : w.rooms.some((id) => roomIds.has(id))));
@@ -107,7 +108,7 @@ export function renderPlan(h, { mode = 'floor', dims = true, pins = false, selec
   for (const r of rooms) {
     const b = bbox(r.polygon);
     let cx = (b.minX + b.maxX) / 2, cy = (b.minY + b.maxY) / 2;
-    if (r.id === 'walk-w') cx = (b.minX + 1.1) / 2;
+    if (r === roles.walkW) cx = (b.minX + 1.1) / 2; // L-shaped: label the strip, not the porch notch
     const est = r.estimate && r.estimate.confidence !== 'high' ? ' class="est"' : '';
     const narrow = b.maxX - b.minX < 1.6 || b.maxY - b.minY < 1.6;
     const lines = [`<text class="nm" x="${X(cx)}" y="${Y(cy) - (dims ? 14 : -10)}"${narrow ? ' font-size="22"' : ''}>${esc(r.name)}</text>`];
@@ -137,7 +138,7 @@ export function renderPlan(h, { mode = 'floor', dims = true, pins = false, selec
   // North arrow and scale bar (bottom-left margin)
   const nd = v(h.northDeg) || 0;
   const ax = 100, ay = H - 100;
-  out.push(`<g id="north-arrow" transform="translate(${ax},${ay}) rotate(-${nd})"><path d="M0,-50 L16,20 L0,8 L-16,20 Z" fill="#2c2c2a"/><text x="0" y="-60" font-size="26" text-anchor="middle" fill="#2c2c2a">N</text></g>`);
+  out.push(`<g id="north-arrow" transform="translate(${ax},${ay}) rotate(${-nd})"><path d="M0,-50 L16,20 L0,8 L-16,20 Z" fill="#2c2c2a"/><text x="0" y="-60" font-size="26" text-anchor="middle" fill="#2c2c2a">N</text></g>`);
   const sx = 180, sy = H - 50;
   out.push(`<g id="scale-bar"><rect x="${sx}" y="${sy}" width="${S}" height="10" fill="#2c2c2a"/><rect x="${sx + S}" y="${sy}" width="${S}" height="10" fill="#fff" stroke="#2c2c2a" stroke-width="2"/>` +
     `<text x="${sx}" y="${sy - 8}" font-size="20" fill="#2c2c2a">0</text><text x="${sx + 2 * S}" y="${sy - 8}" font-size="20" fill="#2c2c2a" text-anchor="middle">2 m</text></g>`);

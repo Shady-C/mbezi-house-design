@@ -1,6 +1,6 @@
 // Validates a house description. Returns human-readable errors with paths.
 
-export const SOURCES = ['tile-count', 'door-width', 'paver-count', 'sketch', 'exif', 'assumption', 'user'];
+export const SOURCES = ['tile-count', 'door-width', 'paver-count', 'sketch', 'exif', 'assumption', 'user', 'adjusted'];
 export const CONFIDENCE = ['high', 'medium', 'low'];
 const FLOORS = ['wood-look', 'white-diagonal', 'bath-pattern', 'pavers', 'porch-tile'];
 const CEILINGS = ['flat', 'tray', 'none'];

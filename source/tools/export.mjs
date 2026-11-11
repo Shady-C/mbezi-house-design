@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { mkdirSync, writeFileSync, readFileSync, copyFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { chromium } from 'playwright';
+import { launchOptions } from './chrome.mjs';
 import { renderPlan, clearSize } from '../src/plan/plan-svg.js';
 import { deriveWalls } from '../src/model/geometry.js';
 
@@ -42,10 +43,16 @@ th, td { text-align: left; padding: 2mm; border-bottom: 0.3mm solid #ddd; vertic
 <table><thead><tr><th>Room</th><th>Clear size</th><th>Area</th><th>Confidence</th><th>Basis</th></tr></thead><tbody>${rows}</tbody></table></div>
 </body></html>`;
 
-const server = spawn(process.execPath, [root + 'tools/serve.mjs', '4199'], { stdio: 'ignore' });
-await new Promise((r) => setTimeout(r, 600));
-const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+// Serve web/ on any free port; the server prints the port it got.
+const server = spawn(process.execPath, [root + 'tools/serve.mjs', '0'], { stdio: ['ignore', 'pipe', 'inherit'] });
+let browser;
 try {
+  const port = await new Promise((resolve, reject) => {
+    server.stdout.on('data', (d) => { const m = /on (\d+)/.exec(String(d)); if (m) resolve(m[1]); });
+    server.on('exit', (code) => reject(new Error(`server exited (${code})`)));
+    setTimeout(() => reject(new Error('server did not start')), 10000);
+  });
+  browser = await chromium.launch(launchOptions);
   const pdfPage = await browser.newPage();
   await pdfPage.setContent(printHtml, { waitUntil: 'load' });
   await pdfPage.pdf({ path: o('floor-plan.pdf'), format: 'A4', landscape: true, printBackground: true });
@@ -53,7 +60,7 @@ try {
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   page.on('pageerror', (e) => console.error('page error:', e.message));
   await page.addInitScript(() => { try { localStorage.clear(); } catch {} });
-  await page.goto('http://localhost:4199/#model');
+  await page.goto(`http://localhost:${port}/#model`);
   await page.waitForFunction(() => window.app && window.app.viewer, null, { timeout: 60000 });
   for (const v of ['aerial', 'dollhouse', 'living', 'kitchen', 'bd2', 'front-yard']) {
     const url = await page.evaluate((v) => window.app.viewer.renderView(v, { width: 1920, height: 1080 }), v);
@@ -67,7 +74,7 @@ try {
   });
   writeFileSync(o('house.glb'), Buffer.from(glb, 'base64'));
 } finally {
-  await browser.close();
+  await browser?.close();
   server.kill();
 }
 console.log(`exported to ${out}/`);

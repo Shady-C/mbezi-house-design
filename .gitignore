@@ -4,3 +4,5 @@ _work/
 __pycache__/
 *.pyc
 .DS_Store
+# Local editor/preview settings
+.claude/

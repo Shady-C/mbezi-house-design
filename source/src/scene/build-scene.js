@@ -1,6 +1,6 @@
 // Builds a three.js Group for the house. THREE is passed in so this runs in Node and the browser.
 // Plan (x, y) maps to three (x, 0, -y); y-up.
-import { v, bbox, deriveWalls, openingRect, solidSegments, pointInPolygon, edgeOf } from '../model/geometry.js';
+import { v, bbox, deriveWalls, openingRect, solidSegments, pointInPolygon, edgeOf, siteRoles } from '../model/geometry.js';
 
 const COLORS = {
   interior: 0xf4f3ef, exterior: 0xc9d3da, skirting: 0x1f1f1f, plot: 0xd9d3a8, pilaster: 0xf2f2ee,
@@ -22,6 +22,8 @@ export function buildHouse(THREE, h, { roof = true, ceilings = true, cutHeight =
   const walls = deriveWalls(h);
   const rects = h.openings.map((o) => ({ o, r: openingRect(h, o.id, walls) }));
   const roomById = new Map(h.rooms.map((r) => [r.id, r]));
+  const roles = siteRoles(h);
+  const porches = new Set(roles.porches);
   const ceilH = (r) => (r && r.ceiling && r.ceiling.type !== 'none' ? v(r.ceiling.height) : 3.0);
   const clip = (y) => (cutHeight == null ? y : Math.min(y, cutHeight));
 
@@ -106,7 +108,10 @@ export function buildHouse(THREE, h, { roof = true, ceilings = true, cutHeight =
       const hinge = (o.swing || '').endsWith('right') ? r.b : r.a;
       const w = v(o.width);
       const tip = [hinge[0] + inN[0] * dir * w, hinge[1] + inN[1] * dir * w];
-      const color = o.id === 'door-front' ? 'doorWood' : o.id.match(/wc1|ensuite|owc/) ? 'doorAlu' : 'doorDark';
+      // Bathroom doors are aluminium, the door out of the house is wood, inside doors are dark.
+      const sides = (wall ? wall.rooms : [o.room]).map((id) => roomById.get(id)).filter(Boolean);
+      const indoor = sides.filter((x) => x.kind === 'indoor');
+      const color = indoor.some((x) => x.floor === 'bath-pattern') ? 'doorAlu' : indoor.length < 2 ? 'doorWood' : 'doorDark';
       const leaf = wallBox(hinge, tip, 0, Math.min(r.height, 2.1), 0.04, mat(color));
       if (leaf) g.add(leaf);
     } else if (o.type === 'gate') {
@@ -132,7 +137,7 @@ export function buildHouse(THREE, h, { roof = true, ceilings = true, cutHeight =
     const geo = new THREE.ShapeGeometry(shapeOf(r.polygon));
     geo.rotateX(-Math.PI / 2);
     const f = new THREE.Mesh(geo, mat(r.floor));
-    f.position.y = r.kind === 'indoor' ? 0.02 : r.id === 'porch' ? 0.015 : 0.005;
+    f.position.y = r.kind === 'indoor' ? 0.02 : porches.has(r) ? 0.015 : 0.005;
     f.name = `floor:${r.id}`;
     group.add(f);
     if (ceilings && r.kind === 'indoor') {
@@ -198,13 +203,12 @@ export function buildHouse(THREE, h, { roof = true, ceilings = true, cutHeight =
     group.add(g);
   }
 
-  // ---------- Outside W/C slab ----------
-  const owc = roomById.get('owc');
-  if (owc && ceilings) {
-    const b = bbox(owc.polygon);
+  // ---------- Outbuilding slabs (outside W/C) ----------
+  for (const ob of ceilings ? roles.outbuildings : []) {
+    const b = bbox(ob.polygon);
     const slab = new THREE.Mesh(new THREE.BoxGeometry(b.maxX - b.minX + 0.6, 0.15, b.maxY - b.minY + 0.2), mat('soffit'));
-    slab.position.set((b.minX + b.maxX) / 2 + 0.25, ceilH(owc) + 0.075, -(b.minY + b.maxY) / 2);
-    slab.name = 'slab:owc';
+    slab.position.set((b.minX + b.maxX) / 2 + 0.25, ceilH(ob) + 0.075, -(b.minY + b.maxY) / 2);
+    slab.name = `slab:${ob.id}`;
     group.add(slab);
   }
 
@@ -247,7 +251,7 @@ export function buildHouse(THREE, h, { roof = true, ceilings = true, cutHeight =
 
   // ---------- Roof: hip at the back, gable at the front ----------
   if (roof) {
-    const house = h.rooms.filter((r) => r.kind === 'indoor' && r.id !== 'owc');
+    const house = roles.house;
     const b = bbox(house.flatMap((r) => r.polygon));
     const oh = v(h.roof.overhang), pitch = (v(h.roof.pitchDeg) * Math.PI) / 180;
     const H = Math.max(...house.map(ceilH)) + 0.05;

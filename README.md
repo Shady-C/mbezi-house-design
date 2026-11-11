@@ -30,8 +30,11 @@ All room sizes are estimates from photos (about ±10–15 %). See [estimates.md]
 cd source
 npm ci
 npm test                      # unit tests
+npm run smoke                 # browser tests (uses Chrome if installed, else Playwright's Chromium)
 node tools/sync-web.mjs       # copy modules, data and three.js into web/
 node tools/serve.mjs 4173     # then open http://localhost:4173
 ```
 
-Pushing to `main` runs the tests and deploys `source/web` to GitHub Pages.
+`node tools/export.mjs --out dist` regenerates the plans, PDF, 3D model and renders.
+
+Pushing to `main` runs the unit and browser tests and deploys `source/web` to GitHub Pages.

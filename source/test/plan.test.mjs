@@ -61,3 +61,19 @@ test('pins with missing or junk headings draw without a cone', () => {
   assert.equal(new Set(ids(svg, 'data-photo')).size, 2);
   assert.equal((svg.match(/<g data-photo="[^"]+" class="pin">(?:<title>[^<]*<\/title>)?<path/g) || []).length, 0);
 });
+
+test('a negative north angle draws a valid arrow rotation', () => {
+  const h2 = structuredClone(h);
+  h2.northDeg = { value: -30, source: 'user', confidence: 'high' };
+  const svg = renderPlan(h2, { mode: 'floor', dims: false, pins: false, selected: null });
+  assert.match(svg, /id="north-arrow"[^>]*rotate\(30\)/);
+  assert.doesNotMatch(svg, /rotate\(--/);
+});
+
+test('floor plan finds the porch and leaves out outbuildings by layout, not by room id', async () => {
+  const { freshHouse, renameRooms, RENAMED } = await import('./helpers.mjs');
+  const svg = renderPlan(renameRooms(freshHouse(), RENAMED), { mode: 'floor', dims: true, pins: false, selected: null });
+  const rooms = new Set(ids(svg, 'data-room'));
+  assert.ok(rooms.has('veranda'), 'porch shown');
+  assert.ok(!rooms.has('shed'), 'outside W/C left out');
+});
